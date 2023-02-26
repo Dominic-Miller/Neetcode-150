@@ -1,1 +1,16 @@
+/*There are a few ways to solve this problem:
 
+1. We could create two HashMaps (one for each string) where the key is the character and the value will be the 
+number of occurances that character has in the string. If the two strings are anagrams, the HashMaps will be equal.
+The time complexity for this solution will be O(n) and the space complexity will also be O(n). n = s + t.
+
+2. If we sort the two strings in alphabetical order and they equal one another, then they will be anagrams.
+This solution would be a bit slower with a time complexity of O(n) and space complexity O(1) which is better since
+we would not have to create HashMaps.*/
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        
+    }
+};
