@@ -11,6 +11,22 @@ we would not have to create HashMaps.*/
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        
+        if (s.length() != t.length()) { //if lengths not equal, cannot be anagram
+            return false;
+        }
+
+        unordered_map<char, int> ms, mt; //create 2 unordered_maps with key char and value int
+        for (int i = 0; i < s.length(); i++) { //iterate through the length of the string
+            ms[s[i]]++; //add the character to the map
+            mt[t[i]]++;
+        }
+
+        for (auto c : s) { //iterate through the string
+            if (ms[c] != mt[c]) { //if character not equal, not anagram
+                return false;
+            }
+        }
+
+        return true;
     }
 };
