@@ -3,8 +3,24 @@
 1. Brute force, we could iterate through our array and check if the current index and any other number adds to be the 
 target. This would lead to a time complexity of O(n^2) and space complexity of O(1) since no additional space is needed.
 
-2. We could create a HashMap which will map each value to the index. We can then iterate through our array, at any given index
+2. We could create a HashMap which will map each number in the array to the index. We can then iterate through our array, at any given index
 there is only one number that when added to the number at our index will lead to the target number. We can solve for that number
-and then check if it exists in our HashMap. This will lead to a time complexity of O(n) and space complexity also O(n).*/
+and then check if it exists in our HashMap and is not at the same index. This will lead to a time complexity of O(n) and space complexity also O(n).*/
 
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> contents; //creates an empty unordered map
 
+        for (int j = 0; j < nums.size(); j++) { //iterate through array
+            int value = target - nums[j]; //number at index + value must = target
+            if ((contents.find(value) != contents.end()) && contents.find(value)->second != j) { //if value found and not at same index
+
+                return vector<int> {j, contents.find(value)->second}; //if not at same index, target value found
+            }
+
+            contents[nums[j]] = j; //add our key (number at index j) and value (index j) to our hashmap
+        }
+        return vector<int> {0, 0};
+    }
+};
